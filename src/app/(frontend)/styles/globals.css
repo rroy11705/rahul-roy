@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --font-roboto: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-reddit-mono: 'Reddit Mono', 'Courier New', Courier, monospace;
+  --font-syne: 'Syne', system-ui, sans-serif;
+}
+
+@theme {
+  --font-sans: var(--font-roboto), system-ui, sans-serif;
+  --font-display: var(--font-syne), system-ui, sans-serif;
+  --font-mono: var(--font-reddit-mono), 'Courier New', monospace;
+
+
+  --color-dark: #161616;
+  --color-gray: #6C6C6C;
+
+  --color-blue: #2476d1;
+  --color-red: #d04136;
+  --color-green: #0a9a5e;
+  --color-yellow: #f8e54f;
+}
+
+body {
+  font-family: var(--font-roboto), system-ui, sans-serif;
+}
