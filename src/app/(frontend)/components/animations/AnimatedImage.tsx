@@ -8,6 +8,8 @@ interface AnimatedImageProps {
   alt: string;
   width?: number;
   height?: number;
+  fill?: boolean;
+  sizes?: string;
   className?: string;
   delay?: number;
   duration?: number;
@@ -21,6 +23,8 @@ export const AnimatedImage = ({
   alt,
   width,
   height,
+  fill = false,
+  sizes,
   className = '',
   delay = 0,
   duration = 0.8,
@@ -55,8 +59,7 @@ export const AnimatedImage = ({
       <Image
         src={src}
         alt={alt}
-        width={width}
-        height={height}
+        {...(fill ? { fill: true, sizes } : { width, height })}
         priority={priority}
         className="w-full h-full object-cover"
       />

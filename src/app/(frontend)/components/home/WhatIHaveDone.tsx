@@ -2,7 +2,9 @@
 
 import React, { useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import { AnimatedText } from '../animations/AnimatedText'
+import { AnimatedSection } from '../animations/AnimatedSection'
+import { AnimatedImage } from '../animations/AnimatedImage'
 
 type Project = {
 	id: string;
@@ -99,21 +101,57 @@ const ProjectCard = ({ project, index, className = "" }: { project: Project; ind
 						<source src={project.asset} type="video/mp4" />
 					</video>
 				) : (
-					<Image
+					<AnimatedImage
 						src={project.asset}
 						alt={project.title}
-						fill
-						className="object-cover"
+						fill={true}
 						sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+						className="absolute inset-0"
+						delay={index * 0.1}
+						duration={0.8}
+						scale={1.1}
+						blur={true}
 					/>
 				)}
 			</motion.div>
-			<div className="flex items-end mt-10">
+			<motion.div 
+				className="flex items-end mt-10"
+				initial={{ opacity: 0, y: 20 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true }}
+				transition={{
+					duration: 0.6,
+					delay: 0.3 + (index * 0.1),
+					ease: [0.25, 0.46, 0.45, 0.94],
+				}}
+			>
 				<div className="text-left text-white">
-					<h4 className="font-display text-xl md:text-3xl font-semibold mb-2">{project.title}</h4>
-					<p className="text-sm md:text-base opacity-80">{project.description}</p>
+					<motion.h4 
+						className="font-display text-xl md:text-3xl font-semibold mb-2"
+						initial={{ opacity: 0, x: -20 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						viewport={{ once: true }}
+						transition={{
+							duration: 0.6,
+							delay: 0.5 + (index * 0.1),
+						}}
+					>
+						{project.title}
+					</motion.h4>
+					<motion.p 
+						className="text-sm md:text-base opacity-80"
+						initial={{ opacity: 0, x: -20 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						viewport={{ once: true }}
+						transition={{
+							duration: 0.6,
+							delay: 0.7 + (index * 0.1),
+						}}
+					>
+						{project.description}
+					</motion.p>
 				</div>
-			</div>
+			</motion.div>
 		</div>
 	);
 };
@@ -123,18 +161,31 @@ const WhatIHaveDone = () => {
 		<section className='w-full bg-dark'>
 			<div className='w-full h-full px-6 md:px-25 py-25 flex flex-col'>
 				<div className='w-full flex flex-row justify-between'>
-					<h4 className='w-fit text-gray text-2xl mt-10 uppercase'>
+					<AnimatedText 
+						delay={0.2}
+						className='w-fit text-gray text-2xl mt-10 uppercase'
+					>
 						What I&apos;VE DONE
-					</h4>
-					<h3 className='w-fit font-medium text-white text-9xl text-right leading-tight tracking-tighter uppercase'>
+					</AnimatedText>
+					<AnimatedSection 
+						delay={0.4}
+						direction="left"
+						distance={50}
+						className='w-fit font-medium text-white text-9xl text-right leading-tight tracking-tighter uppercase'
+					>
 						A selection
-					</h3>
+					</AnimatedSection>
 				</div>
-				<div className='w-full flex flex-row justify-end mb-20'>
+				<AnimatedSection 
+					delay={0.6}
+					direction="right"
+					distance={50}
+					className='w-full flex flex-row justify-end mb-20'
+				>
 					<h3 className='w-fit font-medium text-white text-9xl text-right leading-tight tracking-tighter uppercase'>
 						of my works
 					</h3>
-				</div>
+				</AnimatedSection>
 				
 				{/* Projects Grid - Positioned by Resolution */}
 				<div className='w-full min-h-[600px] md:min-h-[900px] grid grid-cols-4 md:grid-cols-10 grid-rows-6 md:grid-rows-8 gap-4 md:gap-20'>

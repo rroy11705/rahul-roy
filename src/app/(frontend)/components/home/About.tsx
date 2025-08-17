@@ -1,28 +1,63 @@
+"use client"
+
 import Link from 'next/link'
 import React from 'react'
+import { AnimatedText } from '../animations/AnimatedText'
+import { AnimatedSection } from '../animations/AnimatedSection'
+import { motion } from 'framer-motion'
 
 const About = () => {
   return (
     <section className="w-full">
 			<div className='w-full h-full px-6 md:px-25 py-25 flex flex-col'>
 				<div className='w-full flex flex-row justify-between'>
-					<h4 className='min-w-2xs text-gray text-2xl mt-10'>
+					<AnimatedText 
+						delay={0.2}
+						animationType="characters"
+						staggerChildren={0.05}
+						className='min-w-2xs text-gray text-2xl mt-10'
+					>
 						I BELIEVE THAT<br />GREAT PRODUCTS<br />ARE MADE
-					</h4>
-					<p className='w-full font-medium text-white text-9xl text-right leading-tight -tracking-[0.08em]'>
+					</AnimatedText>
+					<AnimatedSection 
+						delay={0.4}
+						direction="right"
+						distance={50}
+						className='w-full font-medium text-white text-9xl text-right leading-tight -tracking-[0.08em]'
+					>
 						WHEN STRATEGY
-					</p>
+					</AnimatedSection>
 				</div>
-				<div className='w-full flex flex-row justify-end'>
+				<AnimatedSection 
+					delay={0.6}
+					direction="left"
+					distance={50}
+					className='w-full flex flex-row justify-end'
+				>
 					<p className='w-fit font-medium text-white text-9xl text-right leading-tight -tracking-[0.08em]'>
 						+ PRECISION
 					</p>
-				</div>
+				</AnimatedSection>
 				<div className='w-full flex flex-row justify-end'>
-					<p className='w-fit font-medium text-white text-9xl text-right leading-tight -tracking-[0.08em]'>
+					<AnimatedSection 
+						delay={0.8}
+						direction="up"
+						distance={30}
+						className='w-fit font-medium text-white text-9xl text-right leading-tight -tracking-[0.08em]'
+					>
 						WORKS
-					</p>
-					<div className='-ml-4 -mr-8 -mt-4'>
+					</AnimatedSection>
+					<motion.div 
+						className='-ml-4 -mr-8 -mt-4'
+						initial={{ scale: 0, rotate: 0 }}
+						whileInView={{ scale: 1, rotate: 0 }}
+						viewport={{ once: true, margin: '-50px' }}
+						transition={{ 
+							duration: 0.8, 
+							delay: 1.0,
+							ease: [0.25, 0.46, 0.45, 0.94] 
+						}}
+					>
 						<svg width={180} height={180} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
 							<g>
 								<g>
@@ -42,16 +77,26 @@ const About = () => {
 									C198.65,255.656,220.978,228.34,220.978,228.34z"/>
 							</g>
 						</svg>
-					</div>
-					<p className='w-fit font-medium text-white text-9xl text-right leading-tight -tracking-[0.08em]'>
+					</motion.div>
+					<AnimatedSection 
+						delay={1.2}
+						direction="right"
+						distance={50}
+						className='w-fit font-medium text-white text-9xl text-right leading-tight -tracking-[0.08em]'
+					>
 						TOGETHER
-					</p>
+					</AnimatedSection>
 				</div>
-				<div className='w-full flex flex-row justify-center py-15'>
+				<AnimatedSection 
+					delay={1.4}
+					direction="up"
+					distance={20}
+					className='w-full flex flex-row justify-center py-15'
+				>
 					<Link href="/about-me" className='cursor-target text-white text-3xl tracking-wider'>
 						[→ Know more about me]
 					</Link>
-				</div>
+				</AnimatedSection>
 			</div>
     </section>
   )
