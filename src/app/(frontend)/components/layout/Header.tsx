@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 import { MobileMenu } from './MobileMenu';
-import { Navigation } from './Navigation';
 
 
 export const Header = () => {
@@ -44,7 +43,7 @@ export const Header = () => {
           </Link>
 
           <div className='flex flex-row items-center gap-6'>
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -58,7 +57,7 @@ export const Header = () => {
                   { label: '[CONTACT]', href: '/contact' },
                 ]}
               />
-            </motion.div>
+            </motion.div> */}
 
             <motion.div 
               initial={{ opacity: 0, y: -20 }}

@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer'
 import About from '@/components/home/About'
 import WhatIDo from '@/components/home/WhatIDo'
 import WhatIHaveDone from '@/components/home/WhatIHaveDone'
+import Contact from '@/components/common/Contact'
 
 export default async function HomePage() {
 
@@ -13,7 +14,7 @@ export default async function HomePage() {
       <About />
       <WhatIDo />
       <WhatIHaveDone />
-      <div className='bg-white min-h-screen' />
+      <Contact />
       <Footer />
     </div>
   )

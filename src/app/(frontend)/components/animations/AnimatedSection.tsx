@@ -6,6 +6,7 @@ import { ReactNode } from 'react';
 interface AnimatedSectionProps {
   children: ReactNode;
   className?: string;
+  id?: string;
   delay?: number;
   duration?: number;
   direction?: 'up' | 'down' | 'left' | 'right';
@@ -15,6 +16,7 @@ interface AnimatedSectionProps {
 export const AnimatedSection = ({
   children,
   className = '',
+  id,
   delay = 0,
   duration = 0.8,
   direction = 'up',
@@ -29,6 +31,7 @@ export const AnimatedSection = ({
 
   return (
     <motion.div
+      id={id}
       className={className}
       initial={directionVariants[direction]}
       whileInView={{ x: 0, y: 0, opacity: 1 }}
