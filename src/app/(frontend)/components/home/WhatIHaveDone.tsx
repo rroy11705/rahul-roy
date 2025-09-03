@@ -84,7 +84,7 @@ const ProjectCard = ({ project, index, className = "" }: { project: Project; ind
 	return (
 		<div className={`relative overflow-hidden cursor-pointer ${className}`}>
 			<motion.div
-				className='relative w-full h-[calc(100%_-_2rem)] md:h-[calc(100%_-_10rem)]'
+				className='relative w-full h-[calc(100%_-_3rem)] sm:h-[calc(100%_-_4rem)] lg:h-[calc(100%_-_10rem)]'
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -92,7 +92,7 @@ const ProjectCard = ({ project, index, className = "" }: { project: Project; ind
 				{isVideo ? (
 					<video
 						ref={videoRef}
-						className="w-full h-full object-cover"
+						className="w-full h-full object-cover rounded-sm"
 						muted
 						loop
 						playsInline
@@ -106,7 +106,7 @@ const ProjectCard = ({ project, index, className = "" }: { project: Project; ind
 						alt={project.title}
 						fill={true}
 						sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-						className="absolute inset-0"
+						className="absolute inset-0 rounded-sm"
 						delay={index * 0.1}
 						duration={0.8}
 						scale={1.1}
@@ -115,7 +115,7 @@ const ProjectCard = ({ project, index, className = "" }: { project: Project; ind
 				)}
 			</motion.div>
 			<motion.div 
-				className="flex items-end mt-10"
+				className="flex items-end mt-4 lg:mt-10"
 				initial={{ opacity: 0, y: 20 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				viewport={{ once: true }}
@@ -127,7 +127,7 @@ const ProjectCard = ({ project, index, className = "" }: { project: Project; ind
 			>
 				<div className="text-left text-white">
 					<motion.h4 
-						className="font-display text-xl md:text-3xl font-semibold mb-2"
+						className="font-display text-lg sm:text-xl lg:text-3xl font-semibold mb-1 sm:mb-2"
 						initial={{ opacity: 0, x: -20 }}
 						whileInView={{ opacity: 1, x: 0 }}
 						viewport={{ once: true }}
@@ -139,7 +139,7 @@ const ProjectCard = ({ project, index, className = "" }: { project: Project; ind
 						{project.title}
 					</motion.h4>
 					<motion.p 
-						className="text-sm md:text-base opacity-80"
+						className="text-white text-sm sm:text-base lg:text-base opacity-80 leading-relaxed"
 						initial={{ opacity: 0, x: -20 }}
 						whileInView={{ opacity: 1, x: 0 }}
 						viewport={{ once: true }}
@@ -159,11 +159,11 @@ const ProjectCard = ({ project, index, className = "" }: { project: Project; ind
 const WhatIHaveDone = () => {
 	return (
 		<section className='w-full bg-dark'>
-			<div className='w-full h-full px-6 md:px-25 py-25 flex flex-col'>
-				<div className='w-full flex flex-row justify-between'>
+			<div className='w-full h-full px-4 sm:px-6 md:px-10 lg:px-25 py-12 sm:py-20 lg:py-25 flex flex-col'>
+				<div className='w-full flex flex-col lg:flex-row lg:justify-between'>
 					<AnimatedText 
 						delay={0.2}
-						className='w-fit text-gray text-2xl mt-10 uppercase'
+						className='w-fit text-gray text-sm sm:text-lg lg:text-2xl mb-4 lg:mb-0 lg:mt-10 uppercase'
 					>
 						What I&apos;VE DONE
 					</AnimatedText>
@@ -171,7 +171,7 @@ const WhatIHaveDone = () => {
 						delay={0.4}
 						direction="left"
 						distance={50}
-						className='w-fit font-medium text-white text-9xl text-right leading-tight tracking-tighter uppercase'
+						className='w-fit font-medium text-white text-responsive-9xl text-center lg:text-right leading-tight tracking-tighter uppercase'
 					>
 						A selection
 					</AnimatedSection>
@@ -180,43 +180,56 @@ const WhatIHaveDone = () => {
 					delay={0.6}
 					direction="right"
 					distance={50}
-					className='w-full flex flex-row justify-end mb-20'
+					className='w-full flex flex-row justify-center lg:justify-end mb-12 sm:mb-16 lg:mb-20'
 				>
-					<h3 className='w-fit font-medium text-white text-9xl text-right leading-tight tracking-tighter uppercase'>
+					<h3 className='w-fit font-medium text-white text-responsive-9xl text-center lg:text-right leading-tight tracking-tighter uppercase'>
 						of my works
 					</h3>
 				</AnimatedSection>
 				
-				{/* Projects Grid - Positioned by Resolution */}
-				<div className='w-full min-h-[600px] md:min-h-[900px] grid grid-cols-4 md:grid-cols-10 grid-rows-6 md:grid-rows-8 gap-4 md:gap-20'>
-					{/* Sconto.ai - Portrait (1280x2279) - Tall left column */}
-					<ProjectCard 
-						project={Projects[1]} 
-						index={1}
-						className="col-span-2 md:col-span-3 row-span-3 md:row-span-4"
-					/>
-					<div className='col-span-1' />
+				{/* Mobile: Simple stacked layout, Desktop: Complex grid */}
+				<div className='w-full'>
+					{/* Mobile Layout - Stacked Cards */}
+					<div className='block lg:hidden space-y-8'>
+						{Projects.map((project, index) => (
+							<ProjectCard 
+								key={project.id}
+								project={project} 
+								index={index}
+								className="w-full aspect-[4/3]"
+							/>
+						))}
+					</div>
 					
-					{/* CreditLink - Landscape (640x360) - Wide top section */}
-					<ProjectCard 
-						project={Projects[0]} 
-						index={0}
-						className="col-span-4 md:col-span-6 row-span-2 md:row-span-4"
-					/>
-					
-					{/* Creative Confluence - Landscape (640x360) - Wide bottom right */}
-					<ProjectCard 
-						project={Projects[2]} 
-						index={2}
-						className="col-span-2 md:col-span-6 row-span-2 md:row-span-4"
-					/>
-					
-					{/* Trymblink - Square (480x480) - Square middle section */}
-					<ProjectCard 
-						project={Projects[3]} 
-						index={3}
-						className="col-span-2 md:col-span-4 row-span-1 md:row-span-4"
-					/>
+					{/* Desktop Layout - Complex Grid */}
+					<div className='hidden lg:grid w-full min-h-[900px] grid-cols-10 grid-rows-8 gap-6'>
+						{/* Sconto.ai - Portrait (1280x2279) - Tall left column */}
+						<ProjectCard 
+							project={Projects[1]} 
+							index={1}
+							className="col-span-3 row-span-4"
+						/>
+						
+						{/* CreditLink - Landscape (640x360) - Wide top section */}
+						<ProjectCard 
+							project={Projects[0]} 
+							index={0}
+							className="col-span-7 row-span-4"
+						/>
+						
+						{/* Creative Confluence & Trymblink - Bottom row */}
+						<ProjectCard 
+							project={Projects[2]} 
+							index={2}
+							className="col-span-6 row-span-4"
+						/>
+						
+						<ProjectCard 
+							project={Projects[3]} 
+							index={3}
+							className="col-span-4 row-span-4"
+						/>
+					</div>
 				</div>
 			</div>
 		</section>

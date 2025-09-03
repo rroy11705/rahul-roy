@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 type NavItem = {
   label: string;
   href: string;
+  target?: '_self' | '_blank';
   submenu?: NavItem[];
 };
 
@@ -75,6 +76,7 @@ export const Navigation = ({ items, className = '' }: NavigationProps) => {
         >
           <Link
             href={item.href}
+            target={item.target || '_self'}
             className={`cursor-target font-medium tracking-wider transition ${
               isActive(item.href) ? 'text-white' : 'text-gray hover:text-white'
             }`}

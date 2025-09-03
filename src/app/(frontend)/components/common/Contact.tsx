@@ -148,19 +148,19 @@ const Contact = ({ pageSource = PageSource.HOME }: ContactProps) => {
   return (
     <AnimatedSection 
       id="contact"
-      className='relative w-full md:px-15 pt-24 md:py-24 overflow-hidden'
+      className='relative w-full px-4 sm:px-6 md:px-10 lg:px-25 pt-12 sm:pt-20 lg:pt-24 pb-12 sm:pb-20 lg:pb-24 overflow-hidden'
       delay={0.2}
       direction="up"
     >
-			<div className='flex flex-col md:flex-row md:gap-12.5'>
+			<div className='flex flex-col lg:flex-row lg:gap-12'>
 				{[PageSource.HOME, PageSource.ABOUT_US, PageSource.SERVICES].includes(pageSource) && (
 					<motion.div 
-						className="flex-1 mb-10 px-6 md:px-0"
+						className="flex-1 mb-8 lg:mb-10"
 						animate={headingControls}
 						initial={{ opacity: 1, scale: 1 }}
 						style={{ transformOrigin: "bottom right" }}
 					>
-						<h2 className="text-white text-gradient-hero text-[32px] md:text-[120px] font-medium text-left">
+						<h2 className="text-white text-gradient-hero text-responsive-9xl font-medium text-center lg:text-left">
 							Let&apos;s Talk →
 						</h2>
 					</motion.div>
@@ -168,7 +168,7 @@ const Contact = ({ pageSource = PageSource.HOME }: ContactProps) => {
 
 				{pageSource === PageSource.CONTACT && (
 					<AnimatedSection 
-						className="relative flex-1 aspect-square border border-[#202020]"
+						className="relative flex-1 aspect-square lg:aspect-square border border-[#202020] mb-8 lg:mb-0"
 						delay={0.4}
 						direction="up"
 					>
@@ -231,15 +231,15 @@ const Contact = ({ pageSource = PageSource.HOME }: ContactProps) => {
 				)}
 
 				<AnimatedSection
-					className="bg-[#202020] flex-1"
+					className="bg-[#202020] flex-1 w-full"
 					delay={0.6}
 					direction="up"
 				>
-					<div className="flex flex-col gap-6 p-6 md:p-10">
-						<h3 className="text-white text-[30px] font-medium">
+					<div className="flex flex-col gap-4 sm:gap-6 p-4 sm:p-6 lg:p-10">
+						<h3 className="text-white text-xl sm:text-2xl lg:text-[30px] font-medium">
 							Add your project in mind?
 						</h3>
-						<form onSubmit={handleSubmit} className="flex flex-col gap-4">
+						<form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-4">
 							<div className="flex flex-col gap-1">
 								<label htmlFor="name" className="text-white text-sm font-medium">
 									Your name
@@ -250,7 +250,7 @@ const Contact = ({ pageSource = PageSource.HOME }: ContactProps) => {
 									placeholder="Enter your name" 
 									value={formData.name}
 									onChange={(e) => handleInputChange('name', e.target.value)}
-									className={`p-3 bg-black text-white outline-none focus:ring-1 ${
+									className={`p-3 sm:p-4 bg-black text-white outline-none focus:ring-1 text-sm sm:text-base ${
 										errors.name ? 'ring-1 ring-red-400 focus:ring-red-400' : 'focus:ring-white'
 									}`}
 								/>
@@ -268,7 +268,7 @@ const Contact = ({ pageSource = PageSource.HOME }: ContactProps) => {
 									placeholder="Enter your email" 
 									value={formData.email}
 									onChange={(e) => handleInputChange('email', e.target.value)}
-									className={`p-3 bg-black text-white outline-none focus:ring-1 ${
+									className={`p-3 sm:p-4 bg-black text-white outline-none focus:ring-1 text-sm sm:text-base ${
 										errors.email ? 'ring-1 ring-red-400 focus:ring-red-400' : 'focus:ring-white'
 									}`}
 								/>
@@ -280,14 +280,14 @@ const Contact = ({ pageSource = PageSource.HOME }: ContactProps) => {
 								<label htmlFor="phone" className="text-white text-sm font-medium">
 									Phone number
 								</label>
-								<div className={`flex gap-0.25 bg-black ${
+								<div className={`flex flex-col sm:flex-row gap-2 sm:gap-0.5 ${
 									errors.phone ? 'ring-1 ring-red-400' : ''
 								}`}>
 									<select 
 										id="countryCode"
 										value={formData.countryCode}
 										onChange={(e) => handleInputChange('countryCode', e.target.value)}
-										className="p-3 bg-black text-white border-none outline-none focus:ring-1 focus:ring-white min-w-20"
+										className="p-3 sm:p-4 bg-black text-white border-none outline-none focus:ring-1 focus:ring-white w-full sm:min-w-20 sm:w-auto text-sm sm:text-base"
 									>
 										{countryCodes.map((country) => (
 											<option key={`${country.code}-${country.name}`} value={country.code}>
@@ -301,7 +301,7 @@ const Contact = ({ pageSource = PageSource.HOME }: ContactProps) => {
 										placeholder="Enter your phone number" 
 										value={formData.phone}
 										onChange={(e) => handleInputChange('phone', e.target.value)}
-										className={`p-3 bg-black text-white flex-1 outline-none focus:ring-1 ${
+										className={`p-3 sm:p-4 bg-black text-white flex-1 outline-none focus:ring-1 text-sm sm:text-base ${
 											errors.phone ? 'focus:ring-red-400' : 'focus:ring-white'
 										}`}
 									/>
@@ -320,7 +320,7 @@ const Contact = ({ pageSource = PageSource.HOME }: ContactProps) => {
 									placeholder="Add your message" 
 									value={formData.message}
 									onChange={(e) => handleInputChange('message', e.target.value)}
-									className={`p-3 bg-black text-white outline-none focus:ring-1 resize-none ${
+									className={`p-3 sm:p-4 bg-black text-white outline-none focus:ring-1 resize-none text-sm sm:text-base ${
 										errors.message ? 'ring-1 ring-red-400 focus:ring-red-400' : 'focus:ring-white'
 									}`}
 								></textarea>
@@ -344,10 +344,10 @@ const Contact = ({ pageSource = PageSource.HOME }: ContactProps) => {
 							<button 
 								type="submit" 
 								disabled={isSubmitting}
-								className={`ml-auto w-fit font-medium text-base transition-all duration-200 px-8 py-4 flex flex-row gap-2 items-center justify-center ${
+								className={`w-full sm:ml-auto sm:w-fit font-medium text-sm sm:text-base transition-all duration-200 px-6 py-3 sm:px-8 sm:py-4 flex flex-row gap-2 items-center justify-center min-h-[44px] ${
 									isSubmitting 
 										? 'bg-gray-600 cursor-not-allowed' 
-										: 'bg-white hover:bg-[#d43d1a]'
+										: 'bg-white hover:bg-gray-200 cursor-pointer'
 								} text-black`}
 							>
 								{isSubmitting ? 'Sending...' : 'Call me back'}

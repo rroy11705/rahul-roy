@@ -11,7 +11,6 @@
   --font-display: var(--font-syne), system-ui, sans-serif;
   --font-mono: var(--font-reddit-mono), 'Courier New', monospace;
 
-
   --color-dark: #161616;
   --color-gray: #6C6C6C;
 
@@ -19,8 +18,109 @@
   --color-red: #d04136;
   --color-green: #0a9a5e;
   --color-yellow: #f8e54f;
+
+  /* Responsive Spacing */
+  --spacing-mobile: 1rem;
+  --spacing-tablet: 2rem;
+  --spacing-desktop: 3rem;
+  
+  /* Container Widths */
+  --container-mobile: 100%;
+  --container-tablet: 768px;
+  --container-desktop: 1200px;
 }
 
 body {
   font-family: var(--font-roboto), system-ui, sans-serif;
+}
+
+/* Responsive Typography Utilities */
+.text-responsive-9xl {
+  font-size: 2rem; /* 32px on mobile */
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  .text-responsive-9xl {
+    font-size: 4rem; /* 64px on tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-responsive-9xl {
+    font-size: 8rem; /* 128px on desktop */
+  }
+}
+
+.text-responsive-6xl {
+  font-size: 1.5rem; /* 24px on mobile */
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  .text-responsive-6xl {
+    font-size: 2.5rem; /* 40px on tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-responsive-6xl {
+    font-size: 3.75rem; /* 60px on desktop */
+  }
+}
+
+.text-responsive-3xl {
+  font-size: 1.125rem; /* 18px on mobile */
+  line-height: 1.3;
+}
+
+@media (min-width: 768px) {
+  .text-responsive-3xl {
+    font-size: 1.5rem; /* 24px on tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-responsive-3xl {
+    font-size: 1.875rem; /* 30px on desktop */
+  }
+}
+
+/* Responsive Spacing Utilities */
+.spacing-responsive {
+  padding: var(--spacing-mobile);
+}
+
+@media (min-width: 768px) {
+  .spacing-responsive {
+    padding: var(--spacing-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .spacing-responsive {
+    padding: var(--spacing-desktop);
+  }
+}
+
+/* Responsive Container */
+.container-responsive {
+  width: 100%;
+  max-width: var(--container-mobile);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-responsive {
+    max-width: var(--container-tablet);
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-responsive {
+    max-width: var(--container-desktop);
+    padding: 0 3rem;
+  }
 }

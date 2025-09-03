@@ -35,7 +35,7 @@ export const AnimatedSection = ({
       className={className}
       initial={directionVariants[direction]}
       whileInView={{ x: 0, y: 0, opacity: 1 }}
-      viewport={{ once: true, margin: '-100px' }}
+      viewport={{ once: true, margin: '0px 0px -50px 0px' }}
       transition={{
         duration,
         delay,

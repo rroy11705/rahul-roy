@@ -41,9 +41,9 @@ const Footer = () => {
     <motion.footer 
       className='w-full flex justify-center items-center'
     >
-			<div className='w-full bg-white py-25 px-4 md:px-25 flex flex-col md:flex-row justify-between'>
+			<div className='w-full bg-white py-12 sm:py-20 lg:py-25 px-4 sm:px-6 md:px-10 lg:px-25 flex flex-col md:flex-row justify-between items-center md:items-start gap-6 md:gap-0'>
 				<motion.p 
-					className='text-black text-3xl tracking-wider'
+					className='text-black text-xl sm:text-2xl lg:text-3xl tracking-wider'
 					initial={{ opacity: 0 }}
 					whileInView={{ opacity: 1 }}
 					viewport={{ once: true }}
@@ -58,20 +58,21 @@ const Footer = () => {
 					className='mix-blend-difference'
 				>
 					<Navigation
+						className='!flex'
 						items={[
-							{ label: '[LINKEDIN]', href: 'https://www.linkedin.com/in/rahulroy99/' },
-							{ label: '[GITHUB]', href: 'https://github.com/rroy11705' },
-							{ label: '[RESUME]', href: '/portfolio' },
+							{ label: '[LINKEDIN]', href: 'https://www.linkedin.com/in/rahulroy99/', target: "_blank" },
+							{ label: '[GITHUB]', href: 'https://github.com/rroy11705', target: "_blank" },
+							{ label: '[RESUME]', href: '/files/RAHUL_ROY_SOFTWARE_DEVELOPER.pdf', target: "_blank" },
 						]}
 					/>
 				</motion.div>
-				<p className='text-white text-3xl tracking-wider'>@ 2025</p>
+				<p className='text-black md:text-white text-xl sm:text-2xl lg:text-3xl tracking-wider'>© 2025</p>
 			</div>
 			<AnimatedSection 
 				delay={0.5}
 				direction="up"
 				distance={30}
-				className='fixed bottom-25 right-6 md:right-25 mix-blend-difference flex flex-col gap-2 items-end'
+				className='fixed bottom-6 sm:bottom-12 lg:bottom-25 right-4 sm:right-6 lg:right-25 mix-blend-difference flex flex-col gap-2 items-end z-50'
 			>
 				<motion.button
 					whileHover={!isAnimating ? {
@@ -88,16 +89,28 @@ const Footer = () => {
 						duration: 0.3,
 						ease: [0.25, 0.46, 0.45, 0.94]
 					}}
-					className='cursor-target text-white text-3xl tracking-wider bg-transparent border-none p-0 font-inherit'
+					className='cursor-target text-white text-lg sm:text-xl lg:text-3xl tracking-wider bg-transparent border-none p-0 font-inherit min-h-[44px] flex items-center'
 				>
 					[Let&apos;s Talk →]
 				</motion.button>
 				<motion.p 
-					className='text-white text-3xl tracking-wider'
+					className='hidden md:block text-white text-lg sm:text-xl lg:text-3xl tracking-wider'
 					initial={{ opacity: 0 }}
 					whileInView={{ opacity: 1 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.6, delay: 0.8 }}
+				>
+					© {new Date().getFullYear()}
+				</motion.p>
+				<motion.p 
+					className='md:hidden text-white text-lg sm:text-xl lg:text-3xl tracking-wider'
+					initial={{ opacity: 0 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.6, delay: 0.8 }}
+					animate={{
+						opacity: isInContact ? 0 : 1,
+						pointerEvents: isInContact ? 'none' : 'auto'
+					}}
 				>
 					© {new Date().getFullYear()}
 				</motion.p>

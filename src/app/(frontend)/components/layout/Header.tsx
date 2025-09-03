@@ -65,12 +65,13 @@ export const Header = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <Link
-                href="#contact"
+                href="/files/RAHUL_ROY_SOFTWARE_DEVELOPER.pdf"
+                target="_blank"
                 className="cursor-target text-gray hover:text-white font tracking-wider"
               >
                 [RESUME]
               </Link>
-              <MobileMenu
+              {/* <MobileMenu
                 // TODO: Add MobileMenu props
                 items={[
                   { label: '[HOME]', href: '/' },
@@ -79,7 +80,7 @@ export const Header = () => {
                   { label: '[BLOGS]', href: '/blogs' },
                   { label: '[CONTACT]', href: '/contact' },
                 ]}
-              />
+              /> */}
             </motion.div>
           </div>
         </header>

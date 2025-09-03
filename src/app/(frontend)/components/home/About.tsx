@@ -8,14 +8,15 @@ import { motion } from 'framer-motion'
 
 const About = () => {
   return (
-    <section className="w-full">
-			<div className='w-full h-full px-6 md:px-25 py-25 flex flex-col'>
-				<div className='w-full flex flex-row justify-between'>
+    <section className="w-full overflow-hidden">
+			<div className='w-full h-full px-4 sm:px-6 md:px-10 lg:px-25 py-12 sm:py-20 lg:py-25 flex flex-col'>
+				{/* Mobile-first layout: stacked vertically */}
+				<div className='w-full flex flex-col lg:flex-row lg:justify-between'>
 					<AnimatedText 
 						delay={0.2}
 						animationType="characters"
 						staggerChildren={0.05}
-						className='min-w-2xs text-gray text-2xl mt-10'
+						className='text-gray text-sm sm:text-lg lg:text-2xl mb-8 lg:mb-0 lg:min-w-2xs lg:mt-10'
 					>
 						I BELIEVE THAT<br />GREAT PRODUCTS<br />ARE MADE
 					</AnimatedText>
@@ -23,32 +24,34 @@ const About = () => {
 						delay={0.4}
 						direction="right"
 						distance={50}
-						className='w-full font-medium text-white text-9xl text-right leading-tight -tracking-[0.08em]'
+						className='w-full font-medium text-white text-responsive-9xl text-center lg:text-right leading-tight -tracking-[0.08em] mb-4 lg:mb-0'
 					>
 						WHEN STRATEGY
 					</AnimatedSection>
 				</div>
+				
 				<AnimatedSection 
 					delay={0.6}
 					direction="left"
 					distance={50}
-					className='w-full flex flex-row justify-end'
+					className='w-full flex flex-row justify-center lg:justify-end mb-4 lg:mb-0'
 				>
-					<p className='w-fit font-medium text-white text-9xl text-right leading-tight -tracking-[0.08em]'>
+					<p className='w-fit font-medium text-white text-responsive-9xl text-center lg:text-right leading-tight -tracking-[0.08em]'>
 						+ PRECISION
 					</p>
 				</AnimatedSection>
-				<div className='w-full flex flex-row justify-end'>
+				
+				<div className='w-full flex flex-col items-center lg:flex-row lg:justify-end'>
 					<AnimatedSection 
 						delay={0.8}
 						direction="up"
 						distance={30}
-						className='w-fit font-medium text-white text-9xl text-right leading-tight -tracking-[0.08em]'
+						className='w-fit font-medium text-white text-responsive-9xl text-center lg:text-right leading-tight -tracking-[0.08em] mb-4 lg:mb-0'
 					>
 						WORKS
 					</AnimatedSection>
 					<motion.div 
-						className='-ml-4 -mr-8 -mt-4'
+						className='mb-4 lg:mb-0 lg:-ml-4 lg:-mr-8 lg:-mt-4 flex justify-center lg:block'
 						initial={{ scale: 0, rotate: 0 }}
 						whileInView={{ scale: 1, rotate: 0 }}
 						viewport={{ once: true, margin: '-50px' }}
@@ -58,7 +61,13 @@ const About = () => {
 							ease: [0.25, 0.46, 0.45, 0.94] 
 						}}
 					>
-						<svg width={180} height={180} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+						<svg 
+							width="120" 
+							height="120" 
+							className="sm:w-[140px] sm:h-[140px] lg:w-[180px] lg:h-[180px]"
+							xmlns="http://www.w3.org/2000/svg" 
+							viewBox="0 0 500 500"
+						>
 							<g>
 								<g>
 									<rect x="202.843" y="339.947" style={{ fill: '#FFFFFF' }} width="122.157" height="45.529"/>
@@ -82,18 +91,19 @@ const About = () => {
 						delay={1.2}
 						direction="right"
 						distance={50}
-						className='w-fit font-medium text-white text-9xl text-right leading-tight -tracking-[0.08em]'
+						className='w-fit font-medium text-white text-responsive-9xl text-center lg:text-right leading-tight -tracking-[0.08em]'
 					>
 						TOGETHER
 					</AnimatedSection>
 				</div>
+				
 				<AnimatedSection 
 					delay={1.4}
 					direction="up"
 					distance={20}
-					className='w-full flex flex-row justify-center py-15'
+					className='w-full flex flex-row justify-center py-8 sm:py-12 lg:py-15 mt-8 lg:mt-0'
 				>
-					<Link href="/about-me" className='cursor-target text-white text-3xl tracking-wider'>
+					<Link href="/about-me" className='cursor-target text-white text-lg sm:text-xl lg:text-3xl tracking-wider'>
 						[→ Know more about me]
 					</Link>
 				</AnimatedSection>
