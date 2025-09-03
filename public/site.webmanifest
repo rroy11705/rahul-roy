@@ -1,0 +1,16 @@
+{
+  "name": "Rahul Roy - Software Developer",
+  "short_name": "Rahul Roy",
+  "description": "Experienced software developer specializing in full-stack web development",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/images/favicon.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

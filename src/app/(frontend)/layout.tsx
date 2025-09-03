@@ -21,8 +21,52 @@ const redditMono = Reddit_Mono({
 })
 
 export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+  title: 'Rahul Roy - Software Developer',
+  description: 'Experienced software developer specializing in full-stack web development, React, Next.js, and modern web technologies. Building innovative digital solutions.',
+  keywords: ['Rahul Roy', 'Software Developer', 'Full Stack Developer', 'React', 'Next.js', 'TypeScript', 'Web Development'],
+  authors: [{ name: 'Rahul Roy' }],
+  creator: 'Rahul Roy',
+  publisher: 'Rahul Roy',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://rahul-roy.com',
+    title: 'Rahul Roy - Software Developer',
+    description: 'Experienced software developer specializing in full-stack web development, React, Next.js, and modern web technologies.',
+    siteName: 'Rahul Roy Portfolio',
+    images: [
+      {
+        url: '/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Rahul Roy - Software Developer Portfolio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Rahul Roy - Software Developer',
+    description: 'Experienced software developer specializing in full-stack web development, React, Next.js, and modern web technologies.',
+    creator: '@rahulroy',
+    images: ['/images/twitter-image.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/images/favicon.png',
+    shortcut: '/images/favicon.png',
+    apple: '/images/favicon.png',
+  },
+  manifest: '/site.webmanifest',
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {

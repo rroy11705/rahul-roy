@@ -4,9 +4,6 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-import { MobileMenu } from './MobileMenu';
-
-
 export const Header = () => {
   // TODO: Fetch global settings for logo and navigation items
   const [isScrolled, setIsScrolled] = useState(false);
