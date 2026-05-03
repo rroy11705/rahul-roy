@@ -24,6 +24,7 @@
     "@payloadcms/richtext-lexical": "3.50.0",
     "@payloadcms/ui": "3.50.0",
     "@tailwindcss/postcss": "^4.1.11",
+    "@tailwindcss/typography": "^0.5.19",
     "cross-env": "^7.0.3",
     "dotenv": "16.4.7",
     "framer-motion": "^12.23.12",

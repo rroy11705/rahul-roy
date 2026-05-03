@@ -56,11 +56,18 @@ export const Header = () => {
               />
             </motion.div> */}
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-row items-center gap-6"
             >
+              <Link
+                href="/blogs"
+                className="cursor-target text-gray hover:text-white font tracking-wider"
+              >
+                [BLOGS]
+              </Link>
               <Link
                 href="/files/RAHUL_ROY_SOFTWARE_DEVELOPER.pdf"
                 target="_blank"

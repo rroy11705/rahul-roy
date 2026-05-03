@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     contacts: Contact;
+    blogs: Blog;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,6 +80,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     contacts: ContactsSelect<false> | ContactsSelect<true>;
+    blogs: BlogsSelect<false> | BlogsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -193,6 +195,76 @@ export interface Contact {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blogs".
+ */
+export interface Blog {
+  id: string;
+  title: string;
+  /**
+   * URL-friendly version of the title (e.g., "my-blog-post")
+   */
+  slug: string;
+  /**
+   * Short preview description (max 250 characters)
+   */
+  description: string;
+  /**
+   * Main blog content
+   */
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Main cover image for the blog
+   */
+  coverImage: string | Media;
+  /**
+   * Additional images to display in the blog content carousel
+   */
+  contentImages?: (string | Media)[] | null;
+  /**
+   * Tags for categorization and related blog suggestions
+   */
+  tags?:
+    | {
+        tag: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Blog author (auto-populated with current user)
+   */
+  author: string | User;
+  /**
+   * Date when the blog was published
+   */
+  publishedAt: string;
+  /**
+   * Estimated read time in minutes (auto-calculated)
+   */
+  readTime?: number | null;
+  /**
+   * Number of views (used for popularity tracking)
+   */
+  views?: number | null;
+  status: 'draft' | 'published';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -209,6 +281,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'contacts';
         value: string | Contact;
+      } | null)
+    | ({
+        relationTo: 'blogs';
+        value: string | Blog;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -303,6 +379,31 @@ export interface ContactsSelect<T extends boolean = true> {
   phone?: T;
   message?: T;
   pageSource?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blogs_select".
+ */
+export interface BlogsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  description?: T;
+  content?: T;
+  coverImage?: T;
+  contentImages?: T;
+  tags?:
+    | T
+    | {
+        tag?: T;
+        id?: T;
+      };
+  author?: T;
+  publishedAt?: T;
+  readTime?: T;
+  views?: T;
+  status?: T;
   updatedAt?: T;
   createdAt?: T;
 }

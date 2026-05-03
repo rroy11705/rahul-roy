@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
   --font-roboto: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -123,4 +124,9 @@ body {
     max-width: var(--container-desktop);
     padding: 0 3rem;
   }
+}
+
+/* Blog cover gradient */
+.gradient-blog-cover {
+  background: linear-gradient(180deg, rgb(22, 22, 22) 0%, rgb(22, 22, 22, 0) 100%);
 }
